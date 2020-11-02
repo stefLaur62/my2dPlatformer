@@ -7,6 +7,7 @@ GameMap::GameMap(){
         cout << "Erreur chargement carte "<<endl;
     }
     map.setTexture(imageMap);
+    map.setTextureRect(IntRect(0,0,1170,700));
     niveau = 0;
 }
 

@@ -1,6 +1,7 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
-
+#include "Monster1.hpp"
+#include <cmath>
 using namespace std;
 using namespace sf;
 
@@ -16,10 +17,15 @@ class Player{
         int lastDirec;
         int animationRate;
         int animActualRate;
-        Sprite sprites[12];
-        Texture textures[12];
+        int hp;
+
+        Sprite sprites[16];
+        Texture textures[16];
         bool canjump;
         bool isAlive;
+        
+        //ATTACK
+        bool canAttack;
 
         Player(int debX,int debY);
         void loadSprite();
@@ -28,6 +34,7 @@ class Player{
 
         void setMovementY(float y);
         void setMovementX(float x);
+        void setDirection(int direc);
 
         bool canLeft(vector<vector<int>> &tabMap, float val);
         bool canRight(vector<vector<int>> &tabMap, float val);
@@ -43,4 +50,10 @@ class Player{
         void moveX(float val);
         void moveDown(float val);
         void jump(float val);
+
+        void attack(int fps, Monster1 &monster);
+        void animationAttack(int fps);
+
+        void loseLife();
+        
 };
